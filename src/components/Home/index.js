@@ -1,23 +1,20 @@
-import { Button } from 'antd';
-import Link from 'next/link';
-import IfComp from 'if-comp';
-import Counter from '../../containers/home/counter';
+import React from 'react';
+import { fetchVideoList } from '../../redux/actions/video';
+// import { Row, Col } from 'antd';
+import VideoList from '../../containers/video/list';
 
-const Home = () => (
-  <>
-    <h1>Hello Next.js</h1>
-    <Link href='/user/list'>
-      <Button type='primary'>UserList Page</Button>
-    </Link>
-    <IfComp
-      expression={true}
-      trueComp={
-        <div style={{ marginTop: '20px' }}>
-          Redux Counter Demo:
-          <Counter />
-        </div>
-      }
-    />
-  </>
-);
-export default Home;
+VideoList.getInitialProps = async (props) => {
+  const { store, isServer } = props.ctx;
+  store.dispatch(fetchVideoList());
+  return { isServer };
+};
+
+export default class Home extends React.Component {
+  render () {
+    return (
+      <div>
+        <VideoList />
+      </div>
+    );
+  }
+}

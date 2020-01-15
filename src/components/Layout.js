@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import DynamicAntdTheme from 'dynamic-antd-theme';
 import Header from './Header';
 
 const Layout = ({ children }) => (
@@ -19,13 +18,13 @@ const Layout = ({ children }) => (
     <div className='content-container'>
       {children}
     </div>
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    {/* <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       Change Theme:
       <DynamicAntdTheme
         style={{ display: 'flex', marginLeft: '10px' }}
         primaryColor='#52c41a'
       />
-    </div>
+    </div> */}
   </>
 );
 export default Layout;

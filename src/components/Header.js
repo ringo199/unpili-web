@@ -1,10 +1,12 @@
-import Link from 'next/link';
-import getConfig from 'next/config';
+// import Link from 'next/link';
+import TopMenu from './TopMenu';
+// import getConfig from 'next/config';
 import { color_white } from '../constants/CustomTheme';
+// import DynamicAntdTheme from 'dynamic-antd-theme';
 import { Button } from 'antd';
 
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
-const { publicRuntimeConfig: { staticFolder } } = getConfig();
+// const { publicRuntimeConfig: { staticFolder } } = getConfig();
 
 const Header = () => (
   <div id='header_bar' className='container'>
@@ -43,12 +45,11 @@ const Header = () => (
         right: 20px;
       }
     `}</style>
-    <Link href='/'>
-      <div className='logo-container'>
-        <img className='logo' alt='logo' src={`${staticFolder}/logo.png`} />
-        <a className='sys-name'>Next-Antd-Scaffold</a>
-      </div>
-    </Link>
+    <TopMenu></TopMenu>
+    {/* <DynamicAntdTheme
+      style={{ display: 'flex', marginLeft: '10px' }}
+      primaryColor='#52c41a'
+    /> */}
     <div className='right-container'>
       <Button style={{ margin: '0 10px' }} type='primary' ghost>登录</Button>
       <Button type='primary'>注册</Button>
