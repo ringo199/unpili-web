@@ -1,7 +1,9 @@
 import FormModal from '../common/FormModel';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import React from 'react';
 import PropTypes from 'prop-types';
+import fetch from '../../core/nextFetch';
+import { api } from '../../constants/Api';
 
 const formConfig = [
   {
@@ -31,17 +33,27 @@ export default class Register extends React.Component {
   };
 
   handleCreate = () => {
-    const { fetchLogin } = this.props;
+    const { fetchUserInfo } = this.props;
     const { form } = this.formRef.props;
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-      fetchLogin({ ...values }).then(res => {
-        console.log('res', res);
+      fetch.post(api.login, {
+        data: values
+      }).then((res) => {
+        fetchUserInfo(res.data);
+        message.success(res.message);
+        form.resetFields();
+        this.setState({ visible: false });
       }).catch(e => {
-        console.log('e', e);
+        message.error(e.message);
       });
+      // fetchUserInfo({ ...values }).then(res => {
+      //   console.log('res', res);
+      // }).catch(e => {
+      //   console.log('e', e);
+      // });
       // form.resetFields();
       // this.setState({ visible: false });
     });
@@ -70,5 +82,5 @@ export default class Register extends React.Component {
 }
 
 Register.propTypes = {
-  fetchLogin: PropTypes.func.isRequired
+  fetchUserInfo: PropTypes.func.isRequired
 };

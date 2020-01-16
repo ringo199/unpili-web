@@ -3,8 +3,7 @@ import TopMenu from './TopMenu';
 // import getConfig from 'next/config';
 import { color_white } from '../constants/CustomTheme';
 // import DynamicAntdTheme from 'dynamic-antd-theme';
-import Register from '../containers/user/register';
-import Login from '../containers/user/login';
+import UserInfo from '../containers/user/userinfo';
 
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
 // const { publicRuntimeConfig: { staticFolder } } = getConfig();
@@ -44,7 +43,6 @@ const Header = () => (
       .right-container {
         position: absolute;
         right: 20px;
-        display: flex;
       }
     `}</style>
     <TopMenu></TopMenu>
@@ -53,8 +51,7 @@ const Header = () => (
       primaryColor='#52c41a'
     /> */}
     <div className='right-container'>
-      <Login />
-      <Register />
+      <UserInfo />
     </div>
   </div>
 );

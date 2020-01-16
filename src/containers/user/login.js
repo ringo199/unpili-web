@@ -4,6 +4,7 @@ import Login from '../../components/User/Login';
 
 const mapStateToProps = state => ({
   ...state.user.login,
+  ...state.user.info
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -9,12 +9,12 @@ const menuList = [
     content: '首页',
     to: 'index'
   },
-  {
-    key: 'upload',
-    icon: 'upload',
-    content: '上传',
-    to: 'upload'
-  }
+  // {
+  //   key: 'upload',
+  //   icon: 'upload',
+  //   content: '上传',
+  //   to: 'upload'
+  // }
 ];
 
 export default class App extends React.Component {

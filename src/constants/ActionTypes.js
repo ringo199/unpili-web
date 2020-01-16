@@ -38,3 +38,9 @@ export const FETCH_LOGIN_SUCCESS = 'FETCH_LOGIN_SUCCESS';
 export const FETCH_REGISTER = 'FETCH_REGISTER';
 export const FETCH_REGISTER_FAIL = 'FETCH_REGISTER_FAIL';
 export const FETCH_REGISTER_SUCCESS = 'FETCH_REGISTER_SUCCESS';
+
+// ================= get user info Part ==================== //
+
+export const FETCH_USER_INFO = 'FETCH_USER_INFO';
+export const FETCH_USER_INFO_FAIL = 'FETCH_USER_INFO_FAIL';
+export const FETCH_USER_INFO_SUCCESS = 'FETCH_USER_INFO_SUCCESS';

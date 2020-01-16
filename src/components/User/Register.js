@@ -1,7 +1,9 @@
 import FormModal from '../common/FormModel';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import React from 'react';
 import PropTypes from 'prop-types';
+import fetch from '../../core/nextFetch';
+import { api } from '../../constants/Api';
 
 const formConfig = [
   {
@@ -40,13 +42,22 @@ export default class Register extends React.Component {
   };
 
   handleOk = () => {
-    const { fetchRegister } = this.props;
+    // const { fetchRegister } = this.props;
     const { form } = this.formRef.props;
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-      fetchRegister({ ...values });
+      // fetchRegister({ ...values });
+      fetch.post(api.register, {
+        data: values
+      }).then(res => {
+        message.success(res.message);
+        form.resetFields();
+        this.setState({ visible: false });
+      }).catch(e => {
+        message.error(e.message);
+      });
 
       // while (Object.keys(registerResult).length === 0) {
       //   if (registerResult.code === 0) {

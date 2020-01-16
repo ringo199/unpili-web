@@ -1,6 +1,6 @@
 
 export const BASE_URL = process.env.NODE_ENV === 'production' ?
-  'http://118.190.36.141/api' : 'http://127.0.0.1:8000/api';
+  'http://118.190.36.141/api' : 'http://127.0.0.1:8099/api';
 
 // const API url
 export const api = {
@@ -35,9 +35,22 @@ export const api = {
    */
   login: '/user/login',
   /**
+   * POST logout
+   * 注销
+   * @method POST
+   */
+
+  logout: '/user/logout',
+  /**
    * POST register
    * 注册
    * @method POST
    */
-  register: '/user/register'
+  register: '/user/register',
+  /**
+   * POST get user info
+   * 获取用户信息
+   * @method POST
+   */
+  getUserInfo: '/user/getInfo'
 };

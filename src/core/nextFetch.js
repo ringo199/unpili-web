@@ -51,7 +51,10 @@ HTTP_METHOD.forEach(method => {
           err.data = data;
           throw err;
         }
-        return data;
+        return {
+          message,
+          data
+        };
       });
   };
 });
