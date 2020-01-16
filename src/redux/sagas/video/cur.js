@@ -19,7 +19,7 @@ export function* fetchOneVideo() {
         }
       });
 
-      const data = yield res;
+      const data = yield res.data;
 
       yield put(fetchOneVideoSuccess(data));
     } catch (e) {

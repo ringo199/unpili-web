@@ -13,7 +13,7 @@ export function* fetchVideoList() {
     yield take(FETCH_VIDEO_LIST);
     try {
       const res = yield fetch.get(api.getVideoList);
-      const data = yield res;
+      const data = yield res.data;
 
       yield put(fetchVideoListSuccess(data));
     } catch (e) {
