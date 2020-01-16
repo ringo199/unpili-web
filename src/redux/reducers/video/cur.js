@@ -12,8 +12,6 @@ const initialState = {
 };
 
 const curVideo = (state = initialState, { type, payload }) => {
-  console.log('payload', type, payload);
-  
   switch (type) {
     case FETCH_ONE_VIDEO:
       return {

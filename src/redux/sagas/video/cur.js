@@ -10,12 +10,12 @@ import { api } from '../../../constants/Api';
  */
 export function* fetchOneVideo() {
   while (true) {
-    const payload = yield take(FETCH_ONE_VIDEO);
+    const { payload } = yield take(FETCH_ONE_VIDEO);
 
     try {
       const res = yield fetch.get(api.getOneVideo, {
         query: {
-          ...payload.payload
+          ...payload
         }
       });
 

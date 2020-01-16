@@ -1,5 +1,7 @@
-export const BASE_URL = 'http://118.190.36.141/api';
-// export const BASE_URL = 'http://127.0.0.1:8000/api';
+
+export const BASE_URL = process.env.NODE_ENV === 'production' ?
+  'http://118.190.36.141/api' : 'http://127.0.0.1:8000/api';
+
 // const API url
 export const api = {
   /**
@@ -14,7 +16,6 @@ export const api = {
    * @method GET
    */
   getOneVideo: '/video/oneVideo',
-
   /**
    * POST save video
    * 保存已上传的视频
@@ -26,5 +27,17 @@ export const api = {
    * 上传文件
    * @method POST
    */
-  uploadFile: '/video/upload'
+  uploadFile: '/video/upload',
+  /**
+   * POST login
+   * 登陆
+   * @method POST
+   */
+  login: '/user/login',
+  /**
+   * POST register
+   * 注册
+   * @method POST
+   */
+  register: '/user/register'
 };

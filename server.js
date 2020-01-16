@@ -2,7 +2,7 @@ const express = require('express');
 const cp = require('child_process');
 const next = require('next');
 const os = require('os');
-// const proxyMiddleware = require('http-proxy-middleware');
+const proxyMiddleware = require('http-proxy-middleware');
 const { publicRuntimeConfig, serverRuntimeConfig } = require('./next.config');
 
 function getIPAdress() {
@@ -25,25 +25,25 @@ const { PORT } = serverRuntimeConfig;
 const app = next({ dev: isDev });
 const handle = app.getRequestHandler();
 
-// const devProxy = {
-//   '/api': {
-//     target: 'http://localhost:8000', // 端口自己配置合适的
-//     pathRewrite: {
-//       '^/api': '/'
-//     },
-//     changeOrigin: true
-//   }
-// };
+const devProxy = {
+  '/api': {
+    target: 'http://localhost:8000', // 端口自己配置合适的
+    pathRewrite: {
+      '^/api': '/'
+    },
+    changeOrigin: true
+  }
+};
 
 app.prepare()
   .then(() => {
     const server = express();
 
-    // if (isDev && devProxy) {
-    //   Object.keys(devProxy).forEach(function(context) {
-    //     server.use(proxyMiddleware(context, devProxy[context]));
-    //   });
-    // }
+    if (isDev && devProxy) {
+      Object.keys(devProxy).forEach(function(context) {
+        server.use(proxyMiddleware(context, devProxy[context]));
+      });
+    }
 
     server.get('*', (req, res) => {
       return handle(req, res);

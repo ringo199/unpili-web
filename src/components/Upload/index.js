@@ -55,8 +55,8 @@ class UploadPage extends React.Component {
         });
         fetch.post(api.uploadSave, {
           data: values
-        }).then(res => {
-          message.success(res.message);
+        }).then(() => {
+          message.success('保存成功');
         });
       }
     });

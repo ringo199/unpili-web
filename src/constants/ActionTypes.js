@@ -26,3 +26,15 @@ export const FETCH_UPLOAD_SAVE_SUCCESS = 'FETCH_UPLOAD_SAVE_SUCCESS';
 export const FETCH_ONE_VIDEO = 'FETCH_ONE_VIDEO';
 export const FETCH_ONE_VIDEO_FAIL = 'FETCH_ONE_VIDEO_FAIL';
 export const FETCH_ONE_VIDEO_SUCCESS = 'FETCH_ONE_VIDEO_SUCCESS';
+
+// ================= login Part ==================== //
+
+export const FETCH_LOGIN = 'FETCH_LOGIN';
+export const FETCH_LOGIN_FAIL = 'FETCH_LOGIN_FAIL';
+export const FETCH_LOGIN_SUCCESS = 'FETCH_LOGIN_SUCCESS';
+
+// ================= register Part ==================== //
+
+export const FETCH_REGISTER = 'FETCH_REGISTER';
+export const FETCH_REGISTER_FAIL = 'FETCH_REGISTER_FAIL';
+export const FETCH_REGISTER_SUCCESS = 'FETCH_REGISTER_SUCCESS';

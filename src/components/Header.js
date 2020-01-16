@@ -3,7 +3,8 @@ import TopMenu from './TopMenu';
 // import getConfig from 'next/config';
 import { color_white } from '../constants/CustomTheme';
 // import DynamicAntdTheme from 'dynamic-antd-theme';
-import { Button } from 'antd';
+import Register from '../containers/user/register';
+import Login from '../containers/user/login';
 
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
 // const { publicRuntimeConfig: { staticFolder } } = getConfig();
@@ -43,6 +44,7 @@ const Header = () => (
       .right-container {
         position: absolute;
         right: 20px;
+        display: flex;
       }
     `}</style>
     <TopMenu></TopMenu>
@@ -51,8 +53,8 @@ const Header = () => (
       primaryColor='#52c41a'
     /> */}
     <div className='right-container'>
-      <Button style={{ margin: '0 10px' }} type='primary' ghost>登录</Button>
-      <Button type='primary'>注册</Button>
+      <Login />
+      <Register />
     </div>
   </div>
 );
