@@ -1,8 +1,5 @@
 import VideoDetail from '../../containers/video/detail';
 import { fetchOneVideo } from '../../redux/actions/video';
-import Router from 'next/router';
-
-console.log(Router);
 
 // Router.routeChangeComplete((props) => {
 //   console.log('props', props);

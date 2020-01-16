@@ -32,3 +32,5 @@ logs/
 # custom
 .next
 out/
+
+.next.zip

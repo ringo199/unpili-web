@@ -5,7 +5,7 @@ import {
 } from '../../../constants/ActionTypes';
 
 const initialState = {
-  list: []
+  rows: []
 };
 
 const list = (state = initialState, { type, payload }) => {

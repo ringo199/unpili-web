@@ -1,38 +1,57 @@
 
-import { Table } from 'antd';
+import { Row, Col } from 'antd';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import React from 'react'; 
 
-const columns = [{
-  title: '标题',
-  dataIndex: 'title',
-  key: 'title',
-  render: (text, rows) => (
-    <Link href={`/video/[videoPage]`} as={`/video/${rows.id}`}>
-      <a>{text}</a>
-    </Link>
-  )
-}, {
-  title: '封面图',
-  dataIndex: 'cover',
-  key: 'cover',
-}, {
-  title: '资源路径',
-  dataIndex: 'url',
-  key: 'url',
-}];
+const gutter = { xs: 8, sm: 16, md: 24, lg: 32 };
 
-const VideoList = ({ rows }) => {
-  return (
-    <Table
-      rowKey={record => record.id}
-      style={{ minWidth: '600px' }}
-      dataSource={rows}
-      columns={columns}
-      bordered
-    />
-  );
-};
+const colSpan = { xs: 24, sm: 12, md: 8, lg: 6 };
+
+// const getSize = (url) => {
+//   if (!Image) return {};
+//   const img = new Image();
+//   img.src = url;
+
+//   return {
+//     width: img.width,
+//     height: img.height
+//   };
+// };
+class VideoList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render () {
+    const { rows } = this.props;
+    return (
+      <Row style={{ width: '100%' }} gutter={gutter}>
+        {
+          rows.map(item => {
+            return (
+              <Col
+                {...colSpan}
+                key = {item.id}
+              >
+                <Link href={`/video/[videoPage]`} as={`/video/${item.id}`}>
+                  <div style={{
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    paddingBottom: '60%',
+                    backgroundImage: `url(${item.cover})`,
+                    backgroundSize: '100%',
+                    backgroundRepeat: 'no-repeat'
+                  }}/>
+                </Link>
+                <div>{item.title}</div>
+              </Col>
+            );
+          })
+        }
+      </Row>
+    );
+  }
+}
 
 VideoList.propTypes = {
   rows: PropTypes.array.isRequired
