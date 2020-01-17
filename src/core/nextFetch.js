@@ -2,6 +2,7 @@ import fetch from 'isomorphic-unfetch';
 import qs from 'query-string';
 import { filterObject } from './util';
 import { BASE_URL } from '../constants/Api';
+import store from 'store2';
 
 // initial fetch
 const nextFetch = Object.create(null);
@@ -45,6 +46,9 @@ HTTP_METHOD.forEach(method => {
       .then(res => res.json())
       .then(({ code = 0, message, data }) => {
         if (code !== 0) {
+          if (code === 2333) {
+            store.remove('username');
+          }
           const err = new Error(message);
           err.message = message;
           err.code = code;

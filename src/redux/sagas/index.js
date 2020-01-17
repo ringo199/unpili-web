@@ -1,10 +1,12 @@
 import { all } from 'redux-saga/effects';
+import init from './init';
 import userSagas from './user/index';
 import videoSagas from './video/index';
 
 export default function* rootSagas() {
   yield all([
     ...userSagas,
-    ...videoSagas
+    ...videoSagas,
+    ...init
   ]);
 }

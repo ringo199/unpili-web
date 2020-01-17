@@ -11,16 +11,14 @@ const initialState = {
 const info = (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_USER_INFO:
-      return {
-        ...state,
-        userInfo: payload
-      };
     case FETCH_USER_INFO_FAIL:
       return initialState;
     case FETCH_USER_INFO_SUCCESS:
       return {
         ...state,
-        ...payload
+        userInfo: {
+          ...payload.data
+        }
       };
     default:
       return state;

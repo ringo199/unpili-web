@@ -7,8 +7,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserInfo(payload) {
-    dispatch(fetchUserInfo(payload));
+  fetchUserInfo() {
+    dispatch(fetchUserInfo());
   }
 });
 

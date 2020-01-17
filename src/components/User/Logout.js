@@ -2,12 +2,15 @@ import PropTypes from 'prop-types';
 import { Button, message } from 'antd';
 import fetch from '../../core/nextFetch';
 import { api } from '../../constants/Api';
+import store from 'store2';
 
-const fetchLogout = (info, fetchUserInfo) => {
+const fetchLogout = (e, info, fetchUserInfo) => {
+  e.preventDefault();
   fetch.post(api.logout, {
     data: info
   }).then((res) => {
     fetchUserInfo({});
+    store.remove('username');
     message.success(res.message);
   }).catch(e => {
     message.error(e.message);
@@ -15,7 +18,7 @@ const fetchLogout = (info, fetchUserInfo) => {
 };
 
 const Logout = ({ userInfo, fetchUserInfo }) => (
-  <Button onClick={() => fetchLogout(userInfo, fetchUserInfo)} type='primary' ghost>注销</Button>
+  <Button onClick={(e) => fetchLogout(e, userInfo, fetchUserInfo)} type='primary' ghost>注销</Button>
 );
 
 export default Logout;

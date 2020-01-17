@@ -1,40 +1,52 @@
 import PropTypes from 'prop-types';
-import { Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Popover, Icon } from 'antd';
 import Register from '../../containers/user/register';
 import Login from '../../containers/user/login';
 import Logout from './Logout';
 import Link from 'next/link';
+import store from 'store2';
 
-const UserInfo = ({ userInfo, fetchUserInfo }) => (
-  <div style={{
-    display: 'flex'
-  }}>
-    {
-      userInfo.username ?
-        <Popover content={
-          <span>
-            昵称：{userInfo.nickname}<br />
-            用户名：{userInfo.username}<br />
-            <Logout userInfo={userInfo} fetchUserInfo={fetchUserInfo} />
-            <Link prefetch href={'/upload'}>
-              <div>
-                <Icon type='upload' />
-                上传
-              </div>
-            </Link>
-          </span>
-        } title='用户信息' trigger='click'>
-          nya! {userInfo.nickname}
-        </Popover>
-        :
-        <Fragment>
-          <Login fetchUserInfo={fetchUserInfo} />
-          <Register />
-        </Fragment>
+class UserInfo extends React.Component {
+  componentDidMount () {
+    const { fetchUserInfo } = this.props;
+    if (store.get('username')) {
+      fetchUserInfo();
     }
-  </div>
-);
+  }
+  render () {
+    const { userInfo, fetchUserInfo } = this.props;
+    return (
+      <div style={{
+        display: 'flex'
+      }}>
+        {
+          userInfo.username ?
+            <Popover content={
+              <span>
+                昵称：{userInfo.nickname}<br />
+                用户名：{userInfo.username}<br />
+                <Link prefetch href={'/upload'}>
+                  <div>
+                    <Icon type='upload' />
+                    上传
+                  </div>
+                </Link>
+              </span>
+            } title='用户信息' trigger='click'>
+              nya! {userInfo.nickname} <Logout userInfo={userInfo} fetchUserInfo={fetchUserInfo} />
+            </Popover>
+            :
+            <Fragment>
+              <Login fetchUserInfo={fetchUserInfo} />
+              <Register />
+            </Fragment>
+        }
+      </div>
+    );
+  }
+}
+
 
 export default UserInfo;
 

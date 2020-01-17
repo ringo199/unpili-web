@@ -5,16 +5,19 @@ import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import createStore from '../redux/store';
 import Layout from '../components/Layout';
+// import { fetchInit } from '../redux/actions/init';
 import '../../assets/self-styles.less';
 
 class NextApp extends App {
-  
+
   static async getInitialProps ({ Component, ctx }) {
     let pageProps = {};
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps({ ctx });
     }
+
+    // ctx.store.dispatch(fetchInit());
 
     return { pageProps };
   }

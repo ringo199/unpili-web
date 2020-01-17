@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import fetch from '../../core/nextFetch';
 import { api } from '../../constants/Api';
+import store from 'store2';
 
 const formConfig = [
   {
@@ -42,7 +43,8 @@ export default class Register extends React.Component {
       fetch.post(api.login, {
         data: values
       }).then((res) => {
-        fetchUserInfo(res.data);
+        store.local.set('username', res.data.username);
+        fetchUserInfo();
         message.success(res.message);
         form.resetFields();
         this.setState({ visible: false });

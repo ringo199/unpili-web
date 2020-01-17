@@ -3,11 +3,11 @@ import {
   FETCH_USER_INFO_FAIL,
   FETCH_USER_INFO_SUCCESS
 } from '../../constants/ActionTypes';
+import { message } from 'antd';
 
-export function fetchUserInfo (payload) {
+export function fetchUserInfo () {
   return {
-    type: FETCH_USER_INFO,
-    payload
+    type: FETCH_USER_INFO
   };
 }
 
@@ -18,7 +18,8 @@ export function fetchUserInfoSuccess (payload) {
   };
 }
 
-export function fetchUserInfoFail () {
+export function fetchUserInfoFail (e) {
+  message.error(e.message);
   return {
     type: FETCH_USER_INFO_FAIL,
   };

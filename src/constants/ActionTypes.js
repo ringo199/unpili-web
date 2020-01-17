@@ -44,3 +44,9 @@ export const FETCH_REGISTER_SUCCESS = 'FETCH_REGISTER_SUCCESS';
 export const FETCH_USER_INFO = 'FETCH_USER_INFO';
 export const FETCH_USER_INFO_FAIL = 'FETCH_USER_INFO_FAIL';
 export const FETCH_USER_INFO_SUCCESS = 'FETCH_USER_INFO_SUCCESS';
+
+// ================= init Part ==================== //
+
+export const FETCH_INIT = 'FETCH_INIT';
+export const FETCH_INIT_FAIL = 'FETCH_INIT_FAIL';
+export const FETCH_INIT_SUCCESS = 'FETCH_INIT_SUCCESS';

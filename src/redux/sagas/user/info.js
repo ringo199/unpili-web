@@ -5,20 +5,21 @@ import {
 } from '../../../constants/ActionTypes';
 import { fetchUserInfoFail, fetchUserInfoSuccess } from '../../actions/userinfo';
 import { api } from '../../../constants/Api';
+import store from 'store2';
 /**
  * userList saga
  */
 export function* fetchUserInfo() {
   while (true) {
-    const { payload } = yield take(FETCH_USER_INFO);
+    yield take(FETCH_USER_INFO);
 
     try {
       const res = yield fetch.post(api.getUserInfo, {
         data: {
-          ...payload
+          username: store.get('username')
         }
       });
-      yield put(fetchUserInfoSuccess(res.data));
+      yield put(fetchUserInfoSuccess(res));
     } catch (e) {
       yield put(fetchUserInfoFail(e));
     }
