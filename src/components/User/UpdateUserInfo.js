@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import FormModal from '../common/FormModel';
 import { Button, message } from 'antd';
 import React from 'react';
@@ -7,19 +8,13 @@ import { api } from '../../constants/Api';
 
 const formConfig = [
   {
-    label: '昵称',
-    value: 'nickname'
-  },
-  {
     label: '用户名',
     value: 'username',
-    rules: [{ required: true, message: '请输入用户名！' }]
+    type: 'readonly'
   },
   {
-    label: '密码',
-    value: 'pwd',
-    type: 'password',
-    rules: [{ required: true, message: '请输入密码！' }]
+    label: '昵称',
+    value: 'nickname'
   },
   {
     label: '头像',
@@ -27,9 +22,9 @@ const formConfig = [
     value: 'avatar'
   },
   {
-    label: '头像',
+    label: '简介',
     type: 'textarea',
-    value: 'avatar'
+    value: 'description'
   }
 ];
 
@@ -39,40 +34,38 @@ export default class Register extends React.Component {
   };
 
   showModal = () => {
+    const { userInfo } = this.props;
     this.setState({ visible: true });
+    this.formRef.props.form.setFieldsValue({ ...userInfo });
+    this.props.tempUserInfo({
+      avatar: userInfo.avatar
+    });
   };
 
   handleCancel = () => {
     this.setState({ visible: false });
+    this.formRef.props.form.resetFields();
   };
 
   handleOk = () => {
-    // const { fetchRegister } = this.props;
+    const { tempInfo, fetchUserInfo } = this.props;
     const { form } = this.formRef.props;
     form.validateFields((err, values) => {
       if (err) {
         return;
       }
-      // fetchRegister({ ...values });
-      fetch.post(api.register, {
+      Object.assign(values, tempInfo);
+
+      fetch.post(api.updateUserInfo, {
         data: values
       }).then(res => {
         message.success(res.message);
+        fetchUserInfo();
         form.resetFields();
         this.setState({ visible: false });
       }).catch(e => {
         message.error(e.message);
       });
-
-      // while (Object.keys(registerResult).length === 0) {
-      //   if (registerResult.code === 0) {
-      //     form.resetFields();
-      //     this.setState({ visible: false });
-      //   } else {
-      //     message.error(registerResult.message);
-      //   }
-      // }
-
     });
   };
 
@@ -82,16 +75,18 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <div>
-        <Button type='primary' onClick={this.showModal}>
-          注册
+      <div style={{
+        textAlign: 'center'
+      }}>
+        <Button type='link' onClick={this.showModal}>
+          个人信息修改
         </Button>
         <FormModal
           wrappedComponentRef={this.saveFormRef}
           visible={this.state.visible}
           onCancel={this.handleCancel}
           onOk={this.handleOk}
-          title='注册'
+          title='个人信息修改'
           formConfig={formConfig}
         />
       </div>
@@ -100,6 +95,8 @@ export default class Register extends React.Component {
 }
 
 Register.propTypes = {
-  fetchRegister: PropTypes.func.isRequired,
-  registerResult: PropTypes.object.isRequired
+  tempUserInfo: PropTypes.func.isRequired,
+  fetchUserInfo: PropTypes.func.isRequired,
+  userInfo: PropTypes.object.isRequired,
+  tempInfo: PropTypes.object.isRequired
 };

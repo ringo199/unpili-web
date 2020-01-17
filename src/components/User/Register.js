@@ -13,19 +13,18 @@ const formConfig = [
   {
     label: '用户名',
     value: 'username',
-    rules: [{ required: true, message: '请输入用户名！' }]
+    options: {
+      rules: [{ required: true, message: '请输入用户名！' }]
+    }
   },
   {
     label: '密码',
     value: 'pwd',
     type: 'password',
-    rules: [{ required: true, message: '请输入密码！' }]
-  },
-  // {
-  //   label: '头像',
-  //   type: 'upload',
-  //   value: 'avatar'
-  // }
+    options: {
+      rules: [{ required: true, message: '请输入密码！' }]
+    }
+  }
 ];
 
 export default class Register extends React.Component {

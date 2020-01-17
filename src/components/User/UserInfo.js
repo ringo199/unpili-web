@@ -4,6 +4,7 @@ import AvatarComp from '../common/AvatarComp';
 import { Popover, Icon, Button } from 'antd';
 import Register from '../../containers/user/register';
 import Login from '../../containers/user/login';
+import UpdateUserInfo from './UpdateUserInfo';
 import Logout from './Logout';
 import Link from 'next/link';
 import store from 'store2';
@@ -16,7 +17,7 @@ class UserInfo extends React.Component {
     }
   }
   render () {
-    const { userInfo, fetchUserInfo } = this.props;
+    const { tempInfo, userInfo, fetchUserInfo, tempUserInfo } = this.props;
     return (
       <div style={{
         display: 'flex'
@@ -38,18 +39,19 @@ class UserInfo extends React.Component {
                 <Link prefetch href={'/upload'}>
                   <Button type='link'>
                     <Icon type='upload' />
-                    上传
+                    上传视频
                   </Button>
                 </Link>
               </span>
             } title={
               <div>
                 nya! {userInfo.username}
-                <Button style={{
-                  marginLeft: '10px'
-                }} type='link'>
-                  个人信息修改
-                </Button>
+                <UpdateUserInfo
+                  fetchUserInfo={fetchUserInfo}
+                  tempUserInfo={tempUserInfo}
+                  tempInfo={tempInfo}
+                  userInfo={userInfo}
+                />
               </div>
             } trigger='click' placement='bottomRight'>
               <div style={{
@@ -77,5 +79,7 @@ export default UserInfo;
 
 UserInfo.propTypes = {
   userInfo: PropTypes.object.isRequired,
-  fetchUserInfo: PropTypes.func.isRequired
+  tempInfo: PropTypes.object.isRequired,
+  fetchUserInfo: PropTypes.func.isRequired,
+  tempUserInfo: PropTypes.func.isRequired
 };

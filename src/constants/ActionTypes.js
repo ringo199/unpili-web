@@ -50,3 +50,7 @@ export const FETCH_USER_INFO_SUCCESS = 'FETCH_USER_INFO_SUCCESS';
 export const FETCH_INIT = 'FETCH_INIT';
 export const FETCH_INIT_FAIL = 'FETCH_INIT_FAIL';
 export const FETCH_INIT_SUCCESS = 'FETCH_INIT_SUCCESS';
+
+// ================= user info temp Part ==================== //
+
+export const TEMP_USER_INFO = 'TEMP_USER_INFO';

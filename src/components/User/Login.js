@@ -10,13 +10,17 @@ const formConfig = [
   {
     label: '用户名',
     value: 'username',
-    rules: [{ required: true, message: '请输入用户名！' }]
+    options: {
+      rules: [{ required: true, message: '请输入用户名！' }]
+    }
   },
   {
     label: '密码',
     value: 'pwd',
     type: 'password',
-    rules: [{ required: true, message: '请输入密码！' }]
+    options: {
+      rules: [{ required: true, message: '请输入密码！' }]
+    }
   },
 ];
 

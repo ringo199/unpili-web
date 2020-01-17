@@ -52,5 +52,11 @@ export const api = {
    * 获取用户信息
    * @method POST
    */
-  getUserInfo: '/user/getInfo'
+  getUserInfo: '/user/getInfo',
+  /**
+   * PUT get user info
+   * 更新用户信息
+   * @method PUT
+   */
+  updateUserInfo: '/user/updateInfo',
 };
