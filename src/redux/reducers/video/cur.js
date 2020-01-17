@@ -8,7 +8,8 @@ const initialState = {
   id: 0,
   title: '',
   cover: '',
-  url: ''
+  url: '',
+  createUser: ''
 };
 
 const curVideo = (state = initialState, { type, payload }) => {
