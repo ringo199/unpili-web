@@ -14,6 +14,7 @@ export function* fetchUserInfo() {
     yield take(FETCH_USER_INFO);
 
     try {
+      if (store.get('username') === null) return;
       const res = yield fetch.post(api.getUserInfo, {
         data: {
           username: store.get('username')

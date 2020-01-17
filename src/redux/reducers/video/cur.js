@@ -9,7 +9,7 @@ const initialState = {
   title: '',
   cover: '',
   url: '',
-  createUser: ''
+  createNickname: ''
 };
 
 const curVideo = (state = initialState, { type, payload }) => {

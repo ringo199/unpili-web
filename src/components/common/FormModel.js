@@ -2,6 +2,19 @@ import { Modal, Form, Input } from 'antd';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+const { TextArea } = Input;
+
+const switchComp = (type) => {
+  switch (type) {
+    case 'password':
+      return <Input type='password'/>;
+    case 'textarea':
+      return <TextArea />;
+    default:
+      return <Input />;
+  }
+};
+
 class FormModel extends React.Component {
   render() {
     const { visible, onCancel, onOk, form, title, formConfig } = this.props;
@@ -21,9 +34,7 @@ class FormModel extends React.Component {
               <Form.Item label={item.label}>
                 {getFieldDecorator(item.value, {
                   rules: item.rules || []
-                })(
-                  <Input type={item.type || 'text'}/>
-                )}
+                })(switchComp(item.type))}
               </Form.Item>
             ))
           }

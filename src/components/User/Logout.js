@@ -9,8 +9,8 @@ const fetchLogout = (e, info, fetchUserInfo) => {
   fetch.post(api.logout, {
     data: info
   }).then((res) => {
-    fetchUserInfo({});
     store.remove('username');
+    fetchUserInfo({});
     message.success(res.message);
   }).catch(e => {
     message.error(e.message);
