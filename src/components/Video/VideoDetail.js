@@ -14,14 +14,15 @@ class UserDetail extends React.Component {
     super(props);
   }
   render () {
-    const { title, url, createTime,
+    const { title, url, createTime, cover,
       createNickname, createAvatar, createDescription, loading } = this.props;
 
     return (
       <div style={{
         padding: '16px',
         boxSizing: 'border-box',
-        minWidth: '60vw'
+        minWidth: '60vw',
+        maxWidth: '70vw'
       }}>
         <Row style={{
           padding: '16px 0',
@@ -45,7 +46,16 @@ class UserDetail extends React.Component {
             </Card>
           </Col>
         </Row>
-        <video type='mp4' src={url} controls />
+        <div style={{
+          background: `url(${cover}) #eeeeee10 no-repeat`,
+          backgroundSize: '100%',
+          textAlign: 'center',
+          width: '100%'
+        }}>
+          <video style={{
+            maxWidth: '100%'
+          }} type='mp4' src={url} controls />
+        </div>
         {/* {loadFlv(url)} */}
       </div>
     );
@@ -58,6 +68,7 @@ UserDetail.propTypes = {
   router: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
+  cover: PropTypes.string.isRequired,
   createTime: PropTypes.number.isRequired,
   createNickname: PropTypes.string.isRequired,
   createAvatar: PropTypes.string.isRequired,
