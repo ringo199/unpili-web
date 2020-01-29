@@ -9,6 +9,8 @@ import AvatarComp from '../common/AvatarComp';
 
 const { Meta } = Card;
 
+const colSpan = { xs: 24, sm: 12, md: 12, lg: 10 };
+
 class UserDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -26,15 +28,23 @@ class UserDetail extends React.Component {
       }}>
         <Row style={{
           padding: '16px 0',
-          boxSizing: 'border-box',
-          display: 'flex',
-          alignItems: 'center'
+          boxSizing: 'border-box'
         }}>
-          <Col span={8}>
+          <Col
+            {...colSpan}
+          >
             <h1>{title}</h1>
             <div>{moment(createTime).format('YYYY-MM-DD hh:mm:ss')}</div>
           </Col>
-          <Col span={8} push={8}>
+          <Col
+            xs={0}
+            sm={0}
+            md={0}
+            lg={4}
+          ></Col>
+          <Col
+            {...colSpan}
+          >
             <Card loading={loading}>
               <Meta
                 avatar={
