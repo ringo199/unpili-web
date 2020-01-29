@@ -54,3 +54,15 @@ export const FETCH_INIT_SUCCESS = 'FETCH_INIT_SUCCESS';
 // ================= user info temp Part ==================== //
 
 export const TEMP_USER_INFO = 'TEMP_USER_INFO';
+
+// ================= get comment Part ==================== //
+
+export const FETCH_COMMENT_LIST = 'FETCH_COMMENT_LIST';
+export const FETCH_COMMENT_LIST_FAIL = 'FETCH_COMMENT_LIST_FAIL';
+export const FETCH_COMMENT_LIST_SUCCESS = 'FETCH_COMMENT_LIST_SUCCESS';
+
+// ================= get comment Part ==================== //
+
+export const FETCH_SAVE_COMMENT = 'FETCH_SAVE_COMMENT';
+export const FETCH_SAVE_COMMENT_FAIL = 'FETCH_SAVE_COMMENT_FAIL';
+export const FETCH_SAVE_COMMENT_SUCCESS = 'FETCH_SAVE_COMMENT_SUCCESS';

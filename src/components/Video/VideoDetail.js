@@ -5,6 +5,7 @@ import React from 'react';
 import moment from 'moment';
 import { Card, Row, Col } from 'antd';
 // import Reflv from 'reflv';
+import Comment from './Comment';
 import AvatarComp from '../common/AvatarComp';
 
 const { Meta } = Card;
@@ -16,7 +17,9 @@ class UserDetail extends React.Component {
     super(props);
   }
   render () {
-    const { title, url, createTime, cover,
+    const { id: videoId, title, url, createTime, cover, commentList,
+      fetchSaveComment,
+      userInfo,
       createNickname, createAvatar, createDescription, loading } = this.props;
 
     return (
@@ -66,7 +69,7 @@ class UserDetail extends React.Component {
             maxWidth: '100%'
           }} type='mp4' src={url} controls />
         </div>
-        {/* {loadFlv(url)} */}
+        <Comment fnSaveComment={fetchSaveComment} commentData={commentList} userInfo={userInfo} videoId={videoId} />
       </div>
     );
   }
@@ -83,5 +86,9 @@ UserDetail.propTypes = {
   createNickname: PropTypes.string.isRequired,
   createAvatar: PropTypes.string.isRequired,
   createDescription: PropTypes.string.isRequired,
-  loading: PropTypes.bool.isRequired
+  loading: PropTypes.bool.isRequired,
+  fetchSaveComment: PropTypes.func.isRequired,
+  commentList: PropTypes.object.isRequired,
+  userInfo: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired
 };
