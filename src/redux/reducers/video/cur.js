@@ -9,7 +9,11 @@ const initialState = {
   title: '',
   cover: '',
   url: '',
-  createNickname: ''
+  createTime: 0,
+  createNickname: '',
+  createAvatar: '',
+  createDescription: '',
+  loading: true
 };
 
 const curVideo = (state = initialState, { type, payload }) => {
@@ -24,7 +28,8 @@ const curVideo = (state = initialState, { type, payload }) => {
     case FETCH_ONE_VIDEO_SUCCESS:
       return {
         ...state,
-        ...payload
+        ...payload,
+        loading: false
       };
     default:
       return state;

@@ -3,6 +3,7 @@ import {
   FETCH_USER_INFO_FAIL,
   FETCH_USER_INFO_SUCCESS
 } from '../../constants/ActionTypes';
+import store from 'store2';
 // import { message } from 'antd';
 
 export function fetchUserInfo () {
@@ -19,6 +20,7 @@ export function fetchUserInfoSuccess (payload) {
 }
 
 export function fetchUserInfoFail () {
+  store.local.remove('username');
   return {
     type: FETCH_USER_INFO_FAIL,
   };
