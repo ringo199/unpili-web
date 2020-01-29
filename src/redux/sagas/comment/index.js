@@ -1,9 +1,11 @@
 import list from './list';
 import save from './save';
+import detail from './detail';
 
 const commentSagas = [
   ...list,
-  ...save
+  ...save,
+  ...detail
 ];
 
 export default commentSagas;

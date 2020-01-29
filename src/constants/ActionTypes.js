@@ -63,6 +63,12 @@ export const FETCH_COMMENT_LIST_SUCCESS = 'FETCH_COMMENT_LIST_SUCCESS';
 
 // ================= get comment Part ==================== //
 
+export const FETCH_COMMENT_DETAIL = 'FETCH_COMMENT_DETAIL';
+export const FETCH_COMMENT_DETAIL_FAIL = 'FETCH_COMMENT_DETAIL_FAIL';
+export const FETCH_COMMENT_DETAIL_SUCCESS = 'FETCH_COMMENT_DETAIL_SUCCESS';
+
+// ================= get comment Part ==================== //
+
 export const FETCH_SAVE_COMMENT = 'FETCH_SAVE_COMMENT';
 export const FETCH_SAVE_COMMENT_FAIL = 'FETCH_SAVE_COMMENT_FAIL';
 export const FETCH_SAVE_COMMENT_SUCCESS = 'FETCH_SAVE_COMMENT_SUCCESS';

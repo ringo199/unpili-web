@@ -17,7 +17,7 @@ class UserDetail extends React.Component {
   }
   render () {
     const { id: videoId, title, url, createTime, cover, commentList,
-      fetchSaveComment,
+      fetchSaveComment, fetchCommentList, fetchCommentDetail,
       userInfo,
       createNickname, createAvatar, createDescription, loading } = this.props;
 
@@ -73,7 +73,14 @@ class UserDetail extends React.Component {
             maxWidth: '100%'
           }} type='mp4' src={url} controls />
         </div>
-        <Comment fnSaveComment={fetchSaveComment} commentData={commentList} userInfo={userInfo} videoId={videoId} />
+        <Comment
+          fnGetCommentDetail={fetchCommentDetail}
+          fnGetCommentList={fetchCommentList}
+          fnSaveComment={fetchSaveComment}
+          commentData={commentList}
+          userInfo={userInfo}
+          videoId={videoId}
+        />
       </div>
     );
   }
@@ -91,6 +98,8 @@ UserDetail.propTypes = {
   createAvatar: PropTypes.string.isRequired,
   createDescription: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
+  fetchCommentDetail: PropTypes.func.isRequired,
+  fetchCommentList: PropTypes.func.isRequired,
   fetchSaveComment: PropTypes.func.isRequired,
   commentList: PropTypes.object.isRequired,
   userInfo: PropTypes.object.isRequired,

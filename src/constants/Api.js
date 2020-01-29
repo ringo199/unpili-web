@@ -1,8 +1,8 @@
 
-// export const BASE_URL = process.env.NODE_ENV === 'production' ?
-//   'http://118.190.36.141/api' : 'http://127.0.0.1:8099/api';
+export const BASE_URL = process.env.NODE_ENV === 'production' ?
+  'http://118.190.36.141/api' : 'http://127.0.0.1:8099/api';
 
-export const BASE_URL = 'http://118.190.36.141/api';
+// export const BASE_URL = 'http://118.190.36.141/api';
 
 // const API url
 export const api = {
@@ -69,8 +69,14 @@ export const api = {
   saveComment: '/comment/save',
   /**
    * GET comment list
-   * 保存评论
+   * 获取评论列表
    * @method GET
    */
   getCommentList: '/comment/list',
+  /**
+   * GET comment detail
+   * 获取评论详情
+   * @method GET
+   */
+  getCommentDetail: '/comment/detail',
 };

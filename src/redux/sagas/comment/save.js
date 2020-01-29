@@ -3,7 +3,7 @@ import { take, put, fork } from 'redux-saga/effects';
 import {
   FETCH_SAVE_COMMENT,
 } from '../../../constants/ActionTypes';
-import { fetchCommentList,
+import { fetchCommentList, fetchCommentDetail,
   fetchSaveCommentFail, fetchSaveCommentSuccess } from '../../actions/comment';
 import { api } from '../../../constants/Api';
 /**
@@ -19,6 +19,9 @@ export function* fetchSaveComment() {
         }
       });
       yield put(fetchCommentList({ videoId: payload.videoId }));
+      if (payload.parentCommentId) {
+        yield put(fetchCommentDetail({ commentId: payload.parentCommentId }));
+      }
       yield put(fetchSaveCommentSuccess(res));
     } catch (e) {
       yield put(fetchSaveCommentFail());

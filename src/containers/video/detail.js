@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchOneVideo } from '../../redux/actions/video';
-import { fetchCommentList, fetchSaveComment } from '../../redux/actions/comment';
+import { fetchCommentList, fetchSaveComment, fetchCommentDetail } from '../../redux/actions/comment';
 import VideoDetail from '../../components/Video/VideoDetail';
 
 const mapStateToProps = state => ({
@@ -22,6 +22,9 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchSaveComment(payload){
     dispatch(fetchSaveComment(payload));
+  },
+  fetchCommentDetail(payload){
+    dispatch(fetchCommentDetail(payload));
   }
 });
 
