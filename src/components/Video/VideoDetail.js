@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-constant-condition */
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 import React from 'react';
 import moment from 'moment';
@@ -29,6 +28,11 @@ class UserDetail extends React.Component {
         minWidth: '60vw',
         maxWidth: '70vw'
       }}>
+        <Head>
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
+          <meta charSet='utf-8' />
+          <title>{title}_🍺🍐🍺🍐 (゜-゜)つロ 干杯~-unpili</title>
+        </Head>
         <Row style={{
           padding: '16px 0',
           boxSizing: 'border-box'

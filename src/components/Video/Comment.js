@@ -10,16 +10,33 @@ const { TextArea } = Input;
 const CommentList = ({ comments }) => (
   <List
     dataSource={comments}
-    header={`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`}
+    header={`${comments.length} 条评论`}
     itemLayout='horizontal'
-    renderItem={props => <Comment
-      avatar={<AvatarComp
-        url={props.avatar}
-      />}
-      author={props.author}
-      content={props.content}
-      datetime={moment(props.datetime).format('YYYY-MM-DD hh:mm:ss')}
-    />
+    renderItem={props => 
+      <List.Item
+        style={{
+          display: 'flex'
+        }}
+        key={props.id}
+        // actions={[
+        //   <IconText type="star-o" text="156" key="list-vertical-star-o" />,
+        //   <IconText type="like-o" text="156" key="list-vertical-like-o" />,
+        //   <IconText type="message" text="2" key="list-vertical-message" />,
+        // ]}
+        extra={`${props.id}楼`}
+      >
+        <Comment
+          style={{
+            flex: 1
+          }}
+          avatar={<AvatarComp
+            url={props.avatar}
+          />}
+          author={props.author}
+          content={<p>{props.content}</p>}
+          datetime={moment(props.datetime).format('YYYY-MM-DD hh:mm:ss')}
+        />
+      </List.Item>
     }
   />
 );
@@ -111,6 +128,7 @@ export default class CommentComp extends React.Component {
 
 CommentList.propTypes = {
   comments: PropTypes.array.isRequired,
+  id: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,

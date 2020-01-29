@@ -1,6 +1,8 @@
 
-export const BASE_URL = process.env.NODE_ENV === 'production' ?
-  'http://118.190.36.141/api' : 'http://127.0.0.1:8099/api';
+// export const BASE_URL = process.env.NODE_ENV === 'production' ?
+//   'http://118.190.36.141/api' : 'http://127.0.0.1:8099/api';
+
+export const BASE_URL = 'http://118.190.36.141/api';
 
 // const API url
 export const api = {

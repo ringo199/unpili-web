@@ -29,7 +29,7 @@ class NextApp extends App {
         <Head>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <meta charSet='utf-8' />
-          <title>Unpili</title>
+          <title>🍺🍐🍺🍐 (゜-゜)つロ 干杯~-unpili</title>
           <link rel='shortcut icon' href='/favicon.ico' type='image/ico'/>
           <style jsx global>{`
             * {
