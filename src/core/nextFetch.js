@@ -12,6 +12,8 @@ const HTTP_METHOD = ['get', 'post', 'put', 'patch', 'delete'];
 // can send data method
 const CAN_SEND_METHOD = ['post', 'put', 'delete', 'patch'];
 
+
+
 HTTP_METHOD.forEach(method => {
   // is can send data in opt.body
   const canSend = CAN_SEND_METHOD.includes(method);
@@ -28,6 +30,11 @@ HTTP_METHOD.forEach(method => {
       mode: 'cors',
       cache: 'no-cache'
     };
+    const token = store.get('token');
+
+    if (token) {
+      opts.headers['x-access-token'] = token;
+    }
 
     if (query) {
       url += `${url.includes('?') ? '&' : '?'}${qs.stringify(
@@ -47,7 +54,7 @@ HTTP_METHOD.forEach(method => {
       .then(({ code = 0, message, data }) => {
         if (code !== 0) {
           if (code === 2333) {
-            store.remove('username');
+            store.remove('token');
           }
           const err = new Error(message);
           err.message = message;

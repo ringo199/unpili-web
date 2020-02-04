@@ -12,7 +12,7 @@ import store from 'store2';
 class UserInfo extends React.Component {
   componentDidMount () {
     const { fetchUserInfo } = this.props;
-    if (store.get('username')) {
+    if (store.get('token')) {
       fetchUserInfo();
     }
   }

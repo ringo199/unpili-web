@@ -47,7 +47,7 @@ export default class Register extends React.Component {
       fetch.post(api.login, {
         data: values
       }).then((res) => {
-        store.local.set('username', res.data.username);
+        store.local.set('token', res.data.token);
         fetchUserInfo();
         message.success(res.message);
         form.resetFields();
