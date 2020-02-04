@@ -20,7 +20,7 @@ export function fetchUserInfoSuccess (payload) {
 }
 
 export function fetchUserInfoFail () {
-  store.local.remove('username');
+  store.local.remove('token');
   return {
     type: FETCH_USER_INFO_FAIL,
   };

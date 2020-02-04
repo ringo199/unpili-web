@@ -9,7 +9,7 @@ const fetchLogout = (e, info, fetchUserInfo) => {
   fetch.post(api.logout, {
     data: info
   }).then((res) => {
-    store.remove('username');
+    store.remove('token');
     fetchUserInfo({});
     message.success(res.message);
   }).catch(e => {
